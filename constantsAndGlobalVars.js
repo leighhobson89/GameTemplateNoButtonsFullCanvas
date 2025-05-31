@@ -6,27 +6,31 @@ export let stateLoading = false;
 //ELEMENTS
 let elements;
 let localization = {};
-let language = 'en';
-let languageSelected = 'en';
-let oldLanguage = 'en';
+let language = "en";
+let languageSelected = "en";
+let oldLanguage = "en";
 
 //CONSTANTS
 export let gameState;
-export const MENU_STATE = 'menuState';
-export const GAME_VISIBLE_PAUSED = 'gameVisiblePaused';
-export const GAME_VISIBLE_ACTIVE = 'gameVisibleActive';
+export const GAME_CANVAS_WIDTH = 1280;
+export const GAME_CANVAS_HEIGHT = 720;
+export const GAME_ASPECT_RATIO = GAME_CANVAS_WIDTH / GAME_CANVAS_HEIGHT;
+
+export const MENU_STATE = "menuState";
+export const GAME_VISIBLE_PAUSED = "gameVisiblePaused";
+export const GAME_VISIBLE_ACTIVE = "gameVisibleActive";
 export const NUMBER_OF_ENEMY_SQUARES = 10;
 export const INITIAL_SPEED_PLAYER = 4;
 export const INITIAL_SPEED_MOVING_ENEMY = 4;
 export const MAX_ATTEMPTS_TO_DRAW_ENEMIES = 1000;
 
 export const playerObject = {
-    x: 100,
-    y: 100,
-    width: 50,
-    height: 50,
-    dx: getInitialSpeedPlayer(),
-    dy: getInitialSpeedPlayer()
+  x: 100,
+  y: 100,
+  width: 50,
+  height: 50,
+  dx: getInitialSpeedPlayer(),
+  dy: getInitialSpeedPlayer(),
 };
 
 //GLOBAL VARIABLES
@@ -42,175 +46,187 @@ export let pauseAutoSaveCountdown = true;
 
 //GETTER SETTER METHODS
 export function setElements() {
-    elements = {
-        menu: document.getElementById('menu'),
-        menuTitle: document.getElementById('menuTitle'),
-        newGameMenuButton:  document.getElementById('newGame'),
-        resumeGameMenuButton: document.getElementById('resumeFromMenu'),
-        loadGameButton: document.getElementById('loadGame'),
-        saveGameButton: document.getElementById('saveGame'),
-        saveLoadPopup: document.getElementById('loadSaveGameStringPopup'),
-        loadSaveGameStringTextArea: document.getElementById('loadSaveGameStringTextArea'),
-        loadStringButton: document.getElementById('loadStringButton'),
-        textAreaLabel: document.getElementById('textAreaLabel'),
-        returnToMenuButton: document.getElementById('returnToMenu'),
-        pauseResumeGameButton: document.getElementById('resumeGame'),
-        canvas: document.getElementById('canvas'),
-        canvasContainer: document.getElementById('canvasContainer'),
-        buttonRow: document.getElementById('buttonRow'),
-        btnEnglish: document.getElementById('btnEnglish'),
-        btnSpanish: document.getElementById('btnSpanish'),
-        btnFrench: document.getElementById('btnFrench'),
-        btnGerman: document.getElementById('btnGerman'),
-        btnItalian: document.getElementById('btnItalian'),
-        copyButtonSavePopup: document.getElementById('copyButtonSavePopup'),
-        closeButtonSavePopup: document.getElementById('closeButtonSavePopup'),
-        overlay: document.getElementById('overlay')
-    };
+  elements = {
+    menu: document.getElementById("menu"),
+    menuTitle: document.getElementById("menuTitle"),
+    newGameMenuButton: document.getElementById("newGame"),
+    resumeGameMenuButton: document.getElementById("resumeFromMenu"),
+    loadGameButton: document.getElementById("loadGame"),
+    saveGameButton: document.getElementById("saveGame"),
+    saveLoadPopup: document.getElementById("loadSaveGameStringPopup"),
+    loadSaveGameStringTextArea: document.getElementById(
+      "loadSaveGameStringTextArea"
+    ),
+    loadStringButton: document.getElementById("loadStringButton"),
+    textAreaLabel: document.getElementById("textAreaLabel"),
+    returnToMenuButton: document.getElementById("returnToMenu"),
+    pauseResumeGameButton: document.getElementById("resumeGame"),
+    canvas: document.getElementById("canvas"),
+    canvasContainer: document.getElementById("canvasContainer"),
+    buttonRow: document.getElementById("buttonRow"),
+    btnEnglish: document.getElementById("btnEnglish"),
+    btnSpanish: document.getElementById("btnSpanish"),
+    btnFrench: document.getElementById("btnFrench"),
+    btnGerman: document.getElementById("btnGerman"),
+    btnItalian: document.getElementById("btnItalian"),
+    copyButtonSavePopup: document.getElementById("copyButtonSavePopup"),
+    closeButtonSavePopup: document.getElementById("closeButtonSavePopup"),
+    overlay: document.getElementById("overlay"),
+  };
 }
 
 export function getPlayerObject() {
-    return playerObject;
+  return playerObject;
 }
 
 export function setGameStateVariable(value) {
-    gameState = value;
+  gameState = value;
 }
 
 export function getGameStateVariable() {
-    return gameState;
+  return gameState;
 }
 
 export function getElements() {
-    return elements;
+  return elements;
 }
 
 export function getLanguageChangedFlag() {
-    return languageChangedFlag;
+  return languageChangedFlag;
 }
 
 export function setLanguageChangedFlag(value) {
-    languageChangedFlag = value;
+  languageChangedFlag = value;
 }
 
 export function resetAllVariables() {
-    // GLOBAL VARIABLES
-
-    // FLAGS
+  // GLOBAL VARIABLES
+  // FLAGS
 }
 
 export function captureGameStatusForSaving() {
-    let gameState = {};
+  let gameState = {};
 
-    // Game variables
+  // Game variables
 
-    // Flags
+  // Flags
 
-    // UI elements
+  // UI elements
 
-    gameState.language = getLanguage();
+  gameState.language = getLanguage();
 
-    return gameState;
+  return gameState;
 }
 export function restoreGameStatus(gameState) {
-    return new Promise((resolve, reject) => {
-        try {
-            // Game variables
+  return new Promise((resolve, reject) => {
+    try {
+      // Game variables
 
-            // Flags
+      // Flags
 
-            // UI elements
+      // UI elements
 
-            setLanguage(gameState.language);
+      setLanguage(gameState.language);
 
-            resolve();
-        } catch (error) {
-            reject(error);
-        }
-    });
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
 
 export function setLocalization(value) {
-    localization = value;
+  localization = value;
 }
 
 export function getLocalization() {
-    return localization;
+  return localization;
 }
 
 export function setLanguage(value) {
-    language = value;
+  language = value;
 }
 
 export function getLanguage() {
-    return language;
+  return language;
 }
 
 export function setOldLanguage(value) {
-    oldLanguage = value;
+  oldLanguage = value;
 }
 
 export function getOldLanguage() {
-    return oldLanguage;
+  return oldLanguage;
 }
 
 export function setAudioMuted(value) {
-    audioMuted = value;
+  audioMuted = value;
 }
 
 export function getAudioMuted() {
-    return audioMuted;
+  return audioMuted;
 }
 
 export function getMenuState() {
-    return MENU_STATE;
+  return MENU_STATE;
 }
 
 export function getGameVisiblePaused() {
-    return GAME_VISIBLE_PAUSED;
+  return GAME_VISIBLE_PAUSED;
 }
 
 export function getGameVisibleActive() {
-    return GAME_VISIBLE_ACTIVE;
+  return GAME_VISIBLE_ACTIVE;
 }
 
 export function getNumberOfEnemySquares() {
-    return NUMBER_OF_ENEMY_SQUARES;
+  return NUMBER_OF_ENEMY_SQUARES;
 }
 
 export function getInitialSpeedPlayer() {
-    return INITIAL_SPEED_PLAYER;
+  return INITIAL_SPEED_PLAYER;
 }
 
 export function getInitialSpeedMovingEnemy() {
-    return INITIAL_SPEED_MOVING_ENEMY;
+  return INITIAL_SPEED_MOVING_ENEMY;
 }
 
 export function getMaxAttemptsToDrawEnemies() {
-    return MAX_ATTEMPTS_TO_DRAW_ENEMIES;
+  return MAX_ATTEMPTS_TO_DRAW_ENEMIES;
 }
 
 export function getLanguageSelected() {
-    return languageSelected;
+  return languageSelected;
 }
 
 export function setLanguageSelected(value) {
-    languageSelected = value;
+  languageSelected = value;
 }
 
 export function getBeginGameStatus() {
-    return beginGameState;
+  return beginGameState;
 }
 
 export function setBeginGameStatus(value) {
-    beginGameState = value;
+  beginGameState = value;
 }
 
 export function getGameInProgress() {
-    return gameInProgress;
+  return gameInProgress;
 }
 
 export function setGameInProgress(value) {
-    gameInProgress = value;
+  gameInProgress = value;
 }
 
+export function getCanvasWidth() {
+  return GAME_CANVAS_WIDTH;
+}
+
+export function getCanvasHeight() {
+  return GAME_CANVAS_HEIGHT;
+}
+
+export function getCanvasAspectRatio() {
+  return GAME_ASPECT_RATIO;
+}

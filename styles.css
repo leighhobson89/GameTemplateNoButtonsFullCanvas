@@ -1,9 +1,13 @@
+html,
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: black;
     color: white;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 #menu {
@@ -115,33 +119,39 @@ button.disabled {
     display: none;
     width: 100vw;
     height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     background-color: black;
+    overflow: hidden;
 }
 
 #buttonRow {
-    width: 80%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: flex-end;
 }
 
 #buttonRow button {
-    width: 200px;
-    height: 50px;
-    margin: 0 10px;
-    text-align: center;
+    width: 50px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 8px;
 }
 
 canvas {
     width: 80%;
     height: auto;
-    border: 1px solid white;
 }
 
 .disabled {
