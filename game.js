@@ -90,7 +90,7 @@ export function startGame() {
 
     const scaleX = containerWidth / internalWidth;
     const scaleY = containerHeight / internalHeight;
-    const scale = Math.max(scaleX, scaleY);
+    const scale = Math.min(scaleX, scaleY);
 
     const visibleWidth = internalWidth * scale;
     const visibleHeight = internalHeight * scale;
